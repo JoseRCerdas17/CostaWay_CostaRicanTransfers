@@ -22,7 +22,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex flex-col gap-lg">
-      <div><h1 className="font-headline-md text-[32px] text-primary mb-xs">Dashboard</h1><p className="font-body-lg text-[18px] text-on-surface-variant">Welcome back! Here's an overview of your business.</p></div>
+      <div><h1 className="font-headline-md text-[32px] text-primary mb-xs">Dashboard</h1><p className="font-body-lg text-[18px] text-on-surface-variant">Welcome back! Here&apos;s an overview of your business.</p></div>
 
       <div className="grid grid-cols-4 gap-md">
         {stats.map((stat) => (

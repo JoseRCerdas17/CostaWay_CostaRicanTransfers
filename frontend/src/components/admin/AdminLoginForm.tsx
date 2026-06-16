@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -15,6 +16,7 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function AdminLoginForm() {
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -32,7 +34,7 @@ export default function AdminLoginForm() {
       if (!response.ok) throw new Error("Invalid credentials");
       const result = await response.json();
       localStorage.setItem("admin_token", result.access_token);
-      window.location.href = "/en/admin/dashboard";
+      router.push("/en/admin/dashboard");
     } catch { setError("Invalid email or password"); }
   };
 

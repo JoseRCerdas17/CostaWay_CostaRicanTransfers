@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel, Field
-from datetime import datetime, date
+from datetime import datetime, date as date_type
 from typing import Optional
 from enum import Enum
 
@@ -18,7 +18,7 @@ class QuoteRequest(SQLModel, table=True):
 
     origin: str
     destination: str
-    date: Optional[date] = None
+    travel_date: Optional[date_type] = None
     passengers: int
 
     customer_name: str
@@ -26,7 +26,7 @@ class QuoteRequest(SQLModel, table=True):
     phone: Optional[str] = None
     notes: Optional[str] = None
 
-    status: QuoteRequestStatus = QuoteRequestStatus.PENDING
+    status: QuoteRequestStatus = Field(default=QuoteRequestStatus.PENDING)
     quoted_price: Optional[float] = None
     payment_link: Optional[str] = None
     converted_booking_id: Optional[int] = Field(default=None, foreign_key="bookings.id")
