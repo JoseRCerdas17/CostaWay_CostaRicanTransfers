@@ -1,0 +1,166 @@
+{
+  "common": {
+    "siteName": "COSTA RICA TRANSFERS",
+    "copyright": "© 2024 Elevated Logistics Costa Rica. All rights reserved.",
+    "search": "Search",
+    "bookings": "Bookings",
+    "support": "Support",
+    "account": "Account"
+  },
+  "nav": {
+    "search": "Search",
+    "bookings": "Bookings",
+    "support": "Support"
+  },
+  "hero": {
+    "title": "Reliable transfers across the Costa Rican terrain.",
+    "subtitle": "Professional, grounded, and dependable transit services ensuring you reach your destination with clarity and calm.",
+    "from": "From",
+    "to": "To",
+    "date": "Date",
+    "passengers": "Passengers",
+    "searchRoutes": "Search Routes",
+    "fromPlaceholder": "SJO Airport",
+    "toPlaceholder": "La Fortuna",
+    "passengerOptions": {
+      "1": "1 Passenger",
+      "2": "2 Passengers",
+      "3-4": "3-4 Passengers",
+      "5+": "5+ Passengers"
+    }
+  },
+  "routes": {
+    "topDestinations": "Top Destinations",
+    "catalogTitle": "All Routes",
+    "catalogSubtitle": "Browse our selection of popular transfer routes across Costa Rica. All prices are per person.",
+    "duration": "Duration",
+    "fromPrice": "From",
+    "privateSuv": "Private SUV",
+    "sharedVan": "Shared Van",
+    "premiumSedan": "Premium Sedan",
+    "viewAll": "View All Routes",
+    "bookNow": "Book Now"
+  },
+  "quoteRequest": {
+    "title": "Request a Custom Quote",
+    "subtitle": "Need a route not listed above? Fill out this form and we'll get back to you with a personalized quote within 24 hours.",
+    "origin": "Origin",
+    "destination": "Destination",
+    "date": "Travel Date",
+    "passengers": "Passengers",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "notes": "Additional Notes",
+    "notesPlaceholder": "Tell us about your trip, special requirements, or any questions you have...",
+    "submit": "Submit Request",
+    "submitting": "Submitting...",
+    "successTitle": "Request Submitted!",
+    "successMessage": "Thank you for your interest. We'll review your request and send you a personalized quote within 24 hours.",
+    "backHome": "Back to Home"
+  },
+  "trust": {
+    "title": "Logistics Built on Trust",
+    "subtitle": "Our operations are designed with meticulous attention to detail, ensuring your transit is predictable, safe, and entirely managed.",
+    "localExpertise": {
+      "title": "Local expertise",
+      "description": "Navigating diverse terrains with veteran drivers who understand the nuances of Costa Rican routes."
+    },
+    "safetyProtocol": {
+      "title": "Safety protocol",
+      "description": "Strict maintenance schedules and rigorous driver vetting form the foundation of our operational security."
+    }
+  },
+  "footer": {
+    "safetyProtocol": "Safety Protocol",
+    "localExpertise": "Local Expertise",
+    "termsOfService": "Terms of Service",
+    "language": "EN/ES"
+  },
+  "booking": {
+    "loading": "Loading booking details...",
+    "notFound": "Booking not found"
+  },
+  "confirmation": {
+    "title": "Booking Confirmed!",
+    "message": "Your transfer has been booked successfully. We've sent a confirmation email with all the details.",
+    "emailSent": "A confirmation email has been sent to your email address.",
+    "whatNext": "What's Next?",
+    "nextSteps": [
+      "Check your email for the confirmation details",
+      "We'll contact you to confirm the pickup details",
+      "Your driver will meet you at the specified location"
+    ]
+  },
+  "adminNav": {
+    "dashboard": "Dashboard",
+    "routes": "Routes",
+    "bookings": "Bookings",
+    "quoteRequests": "Quote Requests",
+    "logout": "Logout"
+  },
+  "adminStats": {
+    "activeRoutes": "Active Routes",
+    "totalBookings": "Total Bookings",
+    "pendingQuotes": "Pending Quotes",
+    "monthlyRevenue": "Monthly Revenue"
+  },
+  "adminDashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back! Here's an overview of your business.",
+    "recentBookings": "Recent Bookings",
+    "viewAll": "View All"
+  },
+  "adminRoutes": {
+    "title": "Route Management",
+    "addRoute": "Add Route",
+    "route": "Route",
+    "vehicleType": "Vehicle Type",
+    "duration": "Duration",
+    "price": "Price",
+    "status": "Status",
+    "actions": "Actions",
+    "active": "Active",
+    "inactive": "Inactive",
+    "editRoute": "Edit Route",
+    "createRoute": "Create Route",
+    "cancel": "Cancel",
+    "update": "Update",
+    "create": "Create"
+  },
+  "adminBookings": {
+    "title": "Bookings",
+    "filterByStatus": "Filter by status",
+    "all": "All",
+    "pending": "Pending",
+    "paid": "Paid",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled",
+    "customer": "Customer",
+    "date": "Date",
+    "passengers": "Passengers",
+    "amount": "Amount",
+    "paymentStatus": "Payment",
+    "bookingStatus": "Status",
+    "noBookings": "No bookings found"
+  },
+  "adminQuotes": {
+    "title": "Quote Requests",
+    "filterByStatus": "Filter by status",
+    "pending": "Pending",
+    "quoted": "Quoted",
+    "converted": "Converted",
+    "rejected": "Rejected",
+    "route": "Route",
+    "customer": "Customer",
+    "date": "Date",
+    "passengers": "Passengers",
+    "status": "Status",
+    "actions": "Actions",
+    "assignPrice": "Assign Price",
+    "quotedPrice": "Quoted Price",
+    "cancel": "Cancel",
+    "assign": "Assign Price",
+    "noQuotes": "No quote requests found"
+  }
+}

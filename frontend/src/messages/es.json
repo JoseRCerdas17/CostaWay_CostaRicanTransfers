@@ -1,0 +1,166 @@
+{
+  "common": {
+    "siteName": "COSTA RICA TRANSFERS",
+    "copyright": "© 2024 Elevated Logistics Costa Rica. Todos los derechos reservados.",
+    "search": "Buscar",
+    "bookings": "Reservas",
+    "support": "Soporte",
+    "account": "Cuenta"
+  },
+  "nav": {
+    "search": "Buscar",
+    "bookings": "Reservas",
+    "support": "Soporte"
+  },
+  "hero": {
+    "title": "Transferencias confiables por el terreno costarricense.",
+    "subtitle": "Servicios de transporte profesional, sólido y confiable que garantizan que llegue a su destino con claridad y tranquilidad.",
+    "from": "Desde",
+    "to": "Hasta",
+    "date": "Fecha",
+    "passengers": "Pasajeros",
+    "searchRoutes": "Buscar Rutas",
+    "fromPlaceholder": "Aeropuerto SJO",
+    "toPlaceholder": "La Fortuna",
+    "passengerOptions": {
+      "1": "1 Pasajero",
+      "2": "2 Pasajeros",
+      "3-4": "3-4 Pasajeros",
+      "5+": "5+ Pasajeros"
+    }
+  },
+  "routes": {
+    "topDestinations": "Destinos Principales",
+    "catalogTitle": "Todas las Rutas",
+    "catalogSubtitle": "Explore nuestra selección de rutas populares de transferencia por Costa Rica. Todos los precios son por persona.",
+    "duration": "Duración",
+    "fromPrice": "Desde",
+    "privateSuv": "SUV Privado",
+    "sharedVan": "Van Compartida",
+    "premiumSedan": "Sedan Premium",
+    "viewAll": "Ver Todas las Rutas",
+    "bookNow": "Reservar Ahora"
+  },
+  "quoteRequest": {
+    "title": "Solicitar una Cotización Personalizada",
+    "subtitle": "¿Necesita una ruta que no está en la lista? Complete este formulario y le responderemos con una cotización personalizada dentro de 24 horas.",
+    "origin": "Origen",
+    "destination": "Destino",
+    "date": "Fecha de Viaje",
+    "passengers": "Pasajeros",
+    "fullName": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "notes": "Notas Adicionales",
+    "notesPlaceholder": "Cuéntenos sobre su viaje, requisitos especiales o cualquier pregunta que tenga...",
+    "submit": "Enviar Solicitud",
+    "submitting": "Enviando...",
+    "successTitle": "¡Solicitud Enviada!",
+    "successMessage": "Gracias por su interés. Revisaremos su solicitud y le enviaremos una cotización personalizada dentro de 24 horas.",
+    "backHome": "Volver al Inicio"
+  },
+  "trust": {
+    "title": "Logística Construida sobre Confianza",
+    "subtitle": "Nuestras operaciones están diseñadas con atención meticulosa al detalle, asegurando que su transporte sea predecible, seguro y completamente administrado.",
+    "localExpertise": {
+      "title": "Experiencia local",
+      "description": "Navegando diversos terrenos con conductores veteranos que entienden los matices de las rutas costarricenses."
+    },
+    "safetyProtocol": {
+      "title": "Protocolo de seguridad",
+      "description": "Programas de mantenimiento estrictos y verificación rigurosa de conductores forman la base de nuestra seguridad operacional."
+    }
+  },
+  "footer": {
+    "safetyProtocol": "Protocolo de Seguridad",
+    "localExpertise": "Experiencia Local",
+    "termsOfService": "Términos de Servicio",
+    "language": "EN/ES"
+  },
+  "booking": {
+    "loading": "Cargando detalles de la reserva...",
+    "notFound": "Reserva no encontrada"
+  },
+  "confirmation": {
+    "title": "¡Reserva Confirmada!",
+    "message": "Su transferencia ha sido reservada con éxito. Hemos enviado un correo de confirmación con todos los detalles.",
+    "emailSent": "Se ha enviado un correo de confirmación a su dirección de correo electrónico.",
+    "whatNext": "¿Qué Sigue?",
+    "nextSteps": [
+      "Revise su correo electrónico para los detalles de confirmación",
+      "Nos pondremos en contacto con usted para confirmar los detalles de recogida",
+      "Su conductor le esperará en el lugar especificado"
+    ]
+  },
+  "adminNav": {
+    "dashboard": "Panel",
+    "routes": "Rutas",
+    "bookings": "Reservas",
+    "quoteRequests": "Cotizaciones",
+    "logout": "Cerrar Sesión"
+  },
+  "adminStats": {
+    "activeRoutes": "Rutas Activas",
+    "totalBookings": "Total de Reservas",
+    "pendingQuotes": "Cotizaciones Pendientes",
+    "monthlyRevenue": "Ingresos Mensuales"
+  },
+  "adminDashboard": {
+    "title": "Panel de Control",
+    "welcome": "¡Bienvenido de nuevo! Aquí tienes un resumen de tu negocio.",
+    "recentBookings": "Reservas Recientes",
+    "viewAll": "Ver Todo"
+  },
+  "adminRoutes": {
+    "title": "Gestión de Rutas",
+    "addRoute": "Agregar Ruta",
+    "route": "Ruta",
+    "vehicleType": "Tipo de Vehículo",
+    "duration": "Duración",
+    "price": "Precio",
+    "status": "Estado",
+    "actions": "Acciones",
+    "active": "Activa",
+    "inactive": "Inactiva",
+    "editRoute": "Editar Ruta",
+    "createRoute": "Crear Ruta",
+    "cancel": "Cancelar",
+    "update": "Actualizar",
+    "create": "Crear"
+  },
+  "adminBookings": {
+    "title": "Reservas",
+    "filterByStatus": "Filtrar por estado",
+    "all": "Todas",
+    "pending": "Pendiente",
+    "paid": "Pagado",
+    "confirmed": "Confirmado",
+    "cancelled": "Cancelado",
+    "customer": "Cliente",
+    "date": "Fecha",
+    "passengers": "Pasajeros",
+    "amount": "Monto",
+    "paymentStatus": "Pago",
+    "bookingStatus": "Estado",
+    "noBookings": "No se encontraron reservas"
+  },
+  "adminQuotes": {
+    "title": "Solicitudes de Cotización",
+    "filterByStatus": "Filtrar por estado",
+    "pending": "Pendiente",
+    "quoted": "Cotizado",
+    "converted": "Convertido",
+    "rejected": "Rechazado",
+    "route": "Ruta",
+    "customer": "Cliente",
+    "date": "Fecha",
+    "passengers": "Pasajeros",
+    "status": "Estado",
+    "actions": "Acciones",
+    "assignPrice": "Asignar Precio",
+    "quotedPrice": "Precio Cotizado",
+    "cancel": "Cancelar",
+    "assign": "Asignar",
+    "noQuotes": "No se encontraron solicitudes de cotización"
+  }
+}
