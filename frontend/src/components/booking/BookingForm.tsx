@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import { createBooking } from "@/lib/api";
 
 const bookingSchema = z.object({
   customerName: z.string().min(2, "Name must be at least 2 characters"),
@@ -33,7 +34,6 @@ export default function BookingForm({ routeSlug, price, locale }: BookingFormPro
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isSubmitting },
   } = useForm<BookingFormData>({
     resolver: zodResolver(bookingSchema),
@@ -54,17 +54,18 @@ export default function BookingForm({ routeSlug, price, locale }: BookingFormPro
 
   const onSubmit = async (data: BookingFormData) => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/v1/bookings`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ routeSlug, ...data }),
-        }
-      );
-      if (!response.ok) throw new Error("Failed to create booking");
-      const booking = await response.json();
-      router.push(`/${locale}/booking/${booking.id}/confirmation`);
+      const booking = await createBooking({
+        route_slug: routeSlug,
+        customerName: data.customerName,
+        email: data.email,
+        phone: data.phone,
+        date: data.date,
+        time: data.time,
+        passengers: data.passengers,
+        flightNumber: data.flightNumber,
+        paymentType: data.paymentType,
+      });
+      router.push(`/${locale}/booking/${booking.id}`);
     } catch {
       alert("Failed to create booking. Please try again.");
     }
@@ -74,7 +75,6 @@ export default function BookingForm({ routeSlug, price, locale }: BookingFormPro
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-lg">
-      {/* Logistics Inputs */}
       <div className="flex flex-col gap-md">
         <div className="flex flex-col gap-1">
           <label className="font-data-label text-[14px] text-[--color-stone]" htmlFor="date">
@@ -126,7 +126,6 @@ export default function BookingForm({ routeSlug, price, locale }: BookingFormPro
           </div>
         </div>
 
-        {/* Pickup/Dropoff Visual */}
         <div className="relative py-2 px-1">
           <div className="absolute left-4 top-0 bottom-0 w-px bg-[--color-tide]/30 z-0"></div>
           <div className="flex flex-col gap-md relative z-10">
@@ -149,7 +148,6 @@ export default function BookingForm({ routeSlug, price, locale }: BookingFormPro
         </div>
       </div>
 
-      {/* Contact Inputs */}
       <div className="flex flex-col gap-md border-t border-outline-variant/30 pt-md">
         <h3 className="font-headline text-[24px] text-primary mb-2">Lead Traveler</h3>
 
@@ -199,7 +197,6 @@ export default function BookingForm({ routeSlug, price, locale }: BookingFormPro
         </div>
       </div>
 
-      {/* Price Breakdown & CTA */}
       <div className="bg-surface-container-low p-md rounded mt-sm">
         <div className="flex justify-between items-center mb-sm font-data-value text-[14px] text-on-surface-variant">
           <span>Vehicle Price</span>
@@ -220,7 +217,6 @@ export default function BookingForm({ routeSlug, price, locale }: BookingFormPro
           </span>
         </div>
 
-        {/* Payment Option */}
         <div className="flex flex-col gap-sm mb-md">
           <label className="font-data-label text-[14px] text-[--color-stone] mb-xs block">
             Payment Option

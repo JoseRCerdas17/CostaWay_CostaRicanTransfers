@@ -1,0 +1,8 @@
+providers = ["python"]
+
+[python]
+version = "3.11"
+installBranch = "debian"
+
+[deployment]
+startCommand = "uvicorn app.main:app --host 0.0.0.0 --port $PORT"

@@ -4,8 +4,11 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { getRoutes } from "@/lib/api";
+import { Route } from "@/lib/api";
 
-const routes = [
+const fallbackRoutes = [
   {
     slug: "sjo-airport-tamarindo",
     origin: "SJO",
@@ -45,53 +48,58 @@ const routes = [
     badge: "scenicRoute",
     imageUrl: "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=800&q=80",
   },
-  {
-    slug: "san-jose-manuel-antonio",
-    origin: "SJO City",
-    destination: "MA",
-    duration: "3.5 hrs",
-    originFull: "San Jose City",
-    vehicleType: "sharedVan",
-    vehicleLabel: "Shared Van",
-    price: 49,
-    priceLabel: "/seat",
-    badge: "",
-    imageUrl: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80",
-  },
-  {
-    slug: "liberia-playa-del-coco",
-    origin: "LIR",
-    destination: "Coco",
-    duration: "1.0 hrs",
-    originFull: "Liberia Airport (LIR)",
-    vehicleType: "privateSuv",
-    vehicleLabel: "Private SUV",
-    price: 55,
-    priceLabel: "/vehicle",
-    badge: "",
-    imageUrl: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80",
-  },
-  {
-    slug: "san-jose-puerto-viejo",
-    origin: "SJO",
-    destination: "P.Viejo",
-    duration: "5.0 hrs",
-    originFull: "San Jose City",
-    vehicleType: "privateSuv",
-    vehicleLabel: "Private SUV",
-    price: 195,
-    priceLabel: "/vehicle",
-    badge: "popular",
-    imageUrl: "https://images.unsplash.com/photo-1552083375-1447ce886485?w=800&q=80",
-  },
 ];
+
+const vehicleIcons: Record<string, string> = {
+  private_suv: "directions_car",
+  shared_van: "airport_shuttle",
+  premium_sedan: "directions_car",
+  van_boat_van: "sailing",
+};
+
+const vehicleLabels: Record<string, string> = {
+  private_suv: "Private SUV",
+  shared_van: "Shared Van",
+  premium_sedan: "Premium Sedan",
+  van_boat_van: "Van-Boat-Van",
+};
 
 export default function RouteCatalog() {
   const t = useTranslations();
+  const [routes, setRoutes] = useState<Route[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchRoutes() {
+      try {
+        const data = await getRoutes();
+        setRoutes(data);
+      } catch {
+        // Use fallback data if API fails
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchRoutes();
+  }, []);
+
+  const displayRoutes = routes.length > 0 ? routes.map(r => ({
+    slug: r.slug,
+    origin: r.origin.split(" ")[0],
+    destination: r.destination.split(" ")[0],
+    originFull: r.origin,
+    duration: r.duration_estimate,
+    vehicleType: r.vehicle_type,
+    vehicleLabel: vehicleLabels[r.vehicle_type] || r.vehicle_type,
+    price: r.price,
+    priceLabel: r.vehicle_type.includes("shared") ? "/seat" : "/vehicle",
+    badge: r.sort_order === 0 ? "popular" : "",
+    imageUrl: r.image_url || "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
+  })) : fallbackRoutes;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-      {routes.map((route, index) => (
+      {displayRoutes.map((route, index) => (
         <motion.article
           key={route.slug}
           className="bg-surface-container-lowest border border-stone-20 flex flex-col p-md group"
@@ -161,7 +169,7 @@ export default function RouteCatalog() {
               <span className="font-data-label text-[10px] text-[--color-stone] uppercase">{t("routes.service")}</span>
               <span className="font-body text-[14px] flex items-center gap-1">
                 <span className="material-symbols-outlined text-[16px] text-primary-container">
-                  {route.vehicleType === "sharedVan" ? "airport_shuttle" : route.vehicleType === "privateSuv" ? "directions_car" : "sailing"}
+                  {vehicleIcons[route.vehicleType] || "directions_car"}
                 </span>
                 {route.vehicleLabel}
               </span>

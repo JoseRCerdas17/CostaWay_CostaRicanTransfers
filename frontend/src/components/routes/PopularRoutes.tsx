@@ -4,8 +4,11 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { getRoutes } from "@/lib/api";
+import { Route } from "@/lib/api";
 
-const popularRoutes = [
+const fallbackRoutes = [
   {
     slug: "sjo-airport-la-fortuna",
     origin: "SJO",
@@ -30,26 +33,42 @@ const popularRoutes = [
     price: 120,
     imageUrl: "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=800&q=80",
   },
-  {
-    slug: "san-jose-puerto-viejo",
-    origin: "SJO",
-    destination: "Puerto Viejo",
-    duration: "5h",
-    price: 195,
-    imageUrl: "https://images.unsplash.com/photo-1552083375-1447ce886485?w=800&q=80",
-  },
-  {
-    slug: "liberia-playa-del-coco",
-    origin: "LIR",
-    destination: "Playa del Coco",
-    duration: "1h",
-    price: 65,
-    imageUrl: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80",
-  },
 ];
+
+const vehicleIcons: Record<string, string> = {
+  private_suv: "directions_car",
+  shared_van: "airport_shuttle",
+  premium_sedan: "directions_car",
+  van_boat_van: "sailing",
+};
 
 export default function PopularRoutes() {
   const t = useTranslations();
+  const [routes, setRoutes] = useState<Route[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchRoutes() {
+      try {
+        const data = await getRoutes();
+        setRoutes(data.slice(0, 5));
+      } catch {
+        // Use fallback data if API fails
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchRoutes();
+  }, []);
+
+  const displayRoutes = routes.length > 0 ? routes.map(r => ({
+    slug: r.slug,
+    origin: r.origin.split(" ")[0],
+    destination: r.destination.split(" ")[0],
+    duration: r.duration_estimate,
+    price: r.price,
+    imageUrl: r.image_url || "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
+  })) : fallbackRoutes;
 
   return (
     <section className="py-xl px-gutter max-w-container-max mx-auto w-full">
@@ -64,7 +83,7 @@ export default function PopularRoutes() {
       </motion.h2>
 
       <div className="flex overflow-x-auto gap-md pb-8 snap-x snap-mandatory hide-scrollbar">
-        {popularRoutes.map((route, index) => (
+        {displayRoutes.map((route, index) => (
           <motion.div
             key={route.slug}
             initial={{ opacity: 0, y: 20 }}
