@@ -38,7 +38,7 @@ export default async function RouteDetailPage({ params }: Props) {
     <>
       {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}
       <Header locale={locale} />
-      <main className="flex-grow flex flex-col gap-xl py-xl">
+      <main className="grow flex flex-col gap-xl py-xl">
         <div className="px-gutter max-w-container-max mx-auto w-full">
           <RouteDetail slug={slug} locale={locale} />
         </div>

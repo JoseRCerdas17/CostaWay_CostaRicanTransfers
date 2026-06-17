@@ -2,7 +2,12 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import Session, select
 from app.database import get_session
 from app.models.route import Route
+from app.models.admin_user import AdminUser
 from app.schemas.route import RouteCreate, RouteUpdate, RouteResponse
+from app.auth.jwt_auth import RoleChecker
+
+router = APIRouter(prefix="/routes", tags=["routes"])
+get_current_admin = RoleChecker(required_superadmin=True)
 
 router = APIRouter(prefix="/routes", tags=["routes"])
 
@@ -37,6 +42,7 @@ async def get_route(slug: str, session: Session = Depends(get_session)):
 async def create_route(
     route_data: RouteCreate,
     session: Session = Depends(get_session),
+    current_user: AdminUser = Depends(get_current_admin),
 ):
     """Create a new route (admin only)."""
     route = Route.model_validate(route_data)
@@ -51,6 +57,7 @@ async def update_route(
     slug: str,
     route_data: RouteUpdate,
     session: Session = Depends(get_session),
+    current_user: AdminUser = Depends(get_current_admin),
 ):
     """Update a route (admin only)."""
     route = session.query(Route).filter(Route.slug == slug).first()
@@ -71,7 +78,11 @@ async def update_route(
 
 
 @router.delete("/{slug}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_route(slug: str, session: Session = Depends(get_session)):
+async def delete_route(
+    slug: str,
+    session: Session = Depends(get_session),
+    current_user: AdminUser = Depends(get_current_admin),
+):
     """Soft delete a route by setting active=False (admin only)."""
     route = session.query(Route).filter(Route.slug == slug).first()
     if not route:

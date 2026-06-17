@@ -51,6 +51,9 @@
 
   --color-cta: #ff6b4a;
   --color-cta-hover: #e55a3d;
+  --color-tide: #2F6B6B;
+  --color-sunset: #FF6B4A;
+  --color-stone: #4A5D53;
 
   --radius: 0.125rem;
   --radius-lg: 0.25rem;
@@ -112,11 +115,53 @@ body {
 }
 
 .elevation-line {
-  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 50 20 100 10 T 200 10 T 300 10 T 400 10' stroke='%232F6B6B' stroke-width='1.5' fill='none' /%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  height: 20px;
+  height: 1.5px;
+  background-color: #2F6B6B;
   width: 100%;
+  position: relative;
+}
+.elevation-line::before, .elevation-line::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #faf9f7;
+  border: 1.5px solid #2F6B6B;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.elevation-line::before { left: 0; }
+.elevation-line::after { right: 0; }
+
+.card-border {
+  border: 1px solid rgba(74, 93, 83, 0.2);
+}
+
+.input-bottom-border {
+  border-bottom: 2px solid rgba(74, 93, 83, 0.3);
+  transition: border-color 0.2s ease;
+}
+.input-bottom-border:focus-within {
+  border-bottom-color: #2F6B6B;
+}
+
+.form-input {
+  border: none;
+  border-bottom: 2px solid rgba(74, 93, 83, 0.2);
+  border-radius: 0;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom-color: #2F6B6B;
+}
+
+.interactive-shadow:hover {
+  box-shadow: 0 4px 12px rgba(31, 58, 46, 0.05);
 }
 
 .material-symbols-outlined {

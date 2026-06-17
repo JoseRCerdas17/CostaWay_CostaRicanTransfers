@@ -29,7 +29,7 @@ async def login(
         )
 
     access_token = create_access_token(
-        data={"user_id": user.id, "email": user.email}
+        data={"user_id": user.id, "email": user.email, "is_superadmin": user.is_superadmin}
     )
     return Token(access_token=access_token)
 

@@ -7,23 +7,26 @@ export default function Footer() {
   return (
     <footer className="w-full mt-xl bg-surface-container-high border-t border-outline-variant">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-md px-gutter py-lg max-w-container-max mx-auto">
-        <div className="flex flex-col gap-sm">
-          <span className="font-headline-sm text-headline-sm text-primary">
+        <div>
+          <h4 className="font-headline text-[24px] text-primary mb-sm">
             {t("common.siteName")}
-          </span>
-          <span className="font-body-sm text-body-sm text-secondary">
-            {t("common.copyright")}
-          </span>
+          </h4>
+          <p className="font-body text-[14px] text-on-surface-variant">
+            © 2024 Elevated Logistics Costa Rica. All rights reserved.
+          </p>
         </div>
-        <div className="flex flex-wrap md:justify-end gap-md items-center font-body-sm text-body-sm text-secondary">
-          <Link href="#" className="hover:underline decoration-primary transition-all cursor-pointer hover:text-primary">
+        <div className="flex flex-wrap gap-md md:justify-end items-center">
+          <Link href="#" className="font-body text-[14px] text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all">
             {t("footer.safetyProtocol")}
           </Link>
-          <Link href="#" className="hover:underline decoration-primary transition-all cursor-pointer hover:text-primary">
+          <Link href="#" className="font-body text-[14px] text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all">
             {t("footer.localExpertise")}
           </Link>
-          <Link href="#" className="hover:underline decoration-primary transition-all cursor-pointer hover:text-primary">
+          <Link href="#" className="font-body text-[14px] text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all">
             {t("footer.termsOfService")}
+          </Link>
+          <Link href="#" className="font-body text-[14px] text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all">
+            EN/ES
           </Link>
         </div>
       </div>

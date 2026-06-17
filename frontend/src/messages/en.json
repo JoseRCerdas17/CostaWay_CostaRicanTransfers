@@ -1,18 +1,19 @@
 {
   "common": {
-    "siteName": "COSTA RICA TRANSFERS",
+    "siteName": "CostaWay",
     "copyright": "© 2024 Elevated Logistics Costa Rica. All rights reserved.",
+    "search": "Search",
+    "bookings": "Bookings",
+    "support": "Support"
+  },
+  "nav": {
     "search": "Search",
     "bookings": "Bookings",
     "support": "Support",
     "account": "Account"
   },
-  "nav": {
-    "search": "Search",
-    "bookings": "Bookings",
-    "support": "Support"
-  },
   "hero": {
+    "professionalLabel": "Professional Transfers",
     "title": "Reliable transfers across the Costa Rican terrain.",
     "subtitle": "Professional, grounded, and dependable transit services ensuring you reach your destination with clarity and calm.",
     "from": "From",
@@ -20,6 +21,7 @@
     "date": "Date",
     "passengers": "Passengers",
     "searchRoutes": "Search Routes",
+    "findTransfer": "Find Your Transfer",
     "fromPlaceholder": "SJO Airport",
     "toPlaceholder": "La Fortuna",
     "passengerOptions": {
@@ -27,19 +29,46 @@
       "2": "2 Passengers",
       "3-4": "3-4 Passengers",
       "5+": "5+ Passengers"
+    },
+    "trust": {
+      "licensed": "Licensed",
+      "support": "24/7 Support",
+      "noFees": "No Hidden Fees"
     }
   },
   "routes": {
-    "topDestinations": "Top Destinations",
+    "topDestinations": "Top Routes",
     "catalogTitle": "All Routes",
-    "catalogSubtitle": "Browse our selection of popular transfer routes across Costa Rica. All prices are per person.",
+    "catalogSubtitle": "Browse our selection of popular transfer routes across Costa Rica. All prices are per vehicle.",
     "duration": "Duration",
     "fromPrice": "From",
     "privateSuv": "Private SUV",
     "sharedVan": "Shared Van",
     "premiumSedan": "Premium Sedan",
-    "viewAll": "View All Routes",
-    "bookNow": "Book Now"
+    "privateTransfer": "Private Transfer",
+    "sharedTransfer": "Shared Transfer",
+    "viewAll": "View",
+    "bookNow": "Book Now",
+    "exploreRoutes": "Explore Routes",
+    "fromPlaceholder": "From (e.g. SJO Airport)",
+    "toPlaceholder": "To (e.g. Tamarindo)",
+    "searchRoutes": "SEARCH ROUTES",
+    "allRegions": "All Regions",
+    "guanacaste": "Guanacaste",
+    "arenalMonteverde": "Arenal & Monteverde",
+    "caribbeanCoast": "Caribbean Coast",
+    "centralPacific": "Central Pacific",
+    "popular": "Popular",
+    "scenicRoute": "Scenic Route",
+    "service": "Service",
+    "flatRate": "Flat rate",
+    "startingFrom": "Starting from",
+    "viewSchedules": "VIEW SCHEDULES",
+    "bookPrivate": "BOOK PRIVATE",
+    "loadMore": "LOAD MORE ROUTES",
+    "customRouteTitle": "Don't see your route?",
+    "customRouteSubtitle": "We offer custom private transfers to anywhere in Costa Rica.",
+    "requestQuote": "REQUEST CUSTOM QUOTE"
   },
   "quoteRequest": {
     "title": "Request a Custom Quote",
@@ -57,11 +86,25 @@
     "submitting": "Submitting...",
     "successTitle": "Request Submitted!",
     "successMessage": "Thank you for your interest. We'll review your request and send you a personalized quote within 24 hours.",
-    "backHome": "Back to Home"
+    "backHome": "Back to Home",
+    "contactInfo": "Contact Information",
+    "routeLogistics": "Route Logistics",
+    "originLocation": "Origin Location",
+    "originPlaceholder": "Hotel, Airport, or City",
+    "destinationLocation": "Destination Location",
+    "destinationPlaceholder": "Specific address or area",
+    "scheduleCapacity": "Schedule & Capacity",
+    "departureDate": "Departure Date",
+    "preferredTime": "Preferred Time",
+    "totalTravelers": "Total Travelers",
+    "specifications": "Specifications",
+    "noCommitment": "Submitting this form does not commit you to a booking. You will receive a detailed proposal via email.",
+    "requestQuote": "Request Quote"
   },
   "trust": {
+    "label": "Why Choose Us",
     "title": "Logistics Built on Trust",
-    "subtitle": "Our operations are designed with meticulous attention to detail, ensuring your transit is predictable, safe, and entirely managed.",
+    "subtitle": "Meticulous design ensuring predictable, safe, and entirely managed transit.",
     "localExpertise": {
       "title": "Local expertise",
       "description": "Navigating diverse terrains with veteran drivers who understand the nuances of Costa Rican routes."
@@ -69,12 +112,19 @@
     "safetyProtocol": {
       "title": "Safety protocol",
       "description": "Strict maintenance schedules and rigorous driver vetting form the foundation of our operational security."
+    },
+    "stats": {
+      "transfers": "Transfers",
+      "rating": "Rating",
+      "support": "Support"
     }
   },
   "footer": {
     "safetyProtocol": "Safety Protocol",
     "localExpertise": "Local Expertise",
     "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
     "language": "EN/ES"
   },
   "booking": {

@@ -3,106 +3,155 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const popularRoutes = [
   {
     slug: "sjo-airport-la-fortuna",
-    origin: "SJO Airport",
-    destination: "La Fortuna",
-    duration: "3.5h",
-    vehicleType: "privateSuv",
-    price: 180,
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJe2B0-uOgLdzdUb7ZdrMFJnwCK4Y5MspY6clTC5TNNl_dxhUs5DWrZ-PJ2-sSlB70luPqn1XBc4A-miKMlLhhL46fVGoNWEoOn8Q9EGE7r9AwIYTWc3-7PjwuFFdQ9sNjDyXTXIZTCkfBjhzJ2xQ2_olN1dxPISbjORlq-r1NVIyTn1ufyYmY6VzWEzyHlCzrxoBAUNKptR8kEI-2ektoKWd7XXlb5q9a_BLGDtZZXIF9vVYOldkQq9xTZUGacCoqh6POXiDatrM",
-    alt: "SJO Airport to La Fortuna Transfer Route",
+    origin: "SJO",
+    destination: "Liberia",
+    duration: "4h 30m",
+    price: 150,
+    imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
   },
   {
     slug: "liberia-tamarindo",
-    origin: "LIR Airport",
+    origin: "SJO",
     destination: "Tamarindo",
-    duration: "1.5h",
-    vehicleType: "sharedVan",
-    price: 45,
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxTIPEsDkmpxey1rQv_FsBVXRfA-6-3FYAXTEST5Ij61Gk_uUiKkFUtcWpojgfbr-tOx0I4ckzZQ69ocCvv4glAosxmPQNPBE3hp7mrXnMcLS2-f-IAmvxJ_P626OFVbJH9Q7s3xG2yB8mEtbuf8cPm3yni-no6QaVfLo4c4sNp10bfyfojorT9dO7xg5tu8FNnTruJsoy5G2uHtRtYAPlvrNmoalynvKwNQ-IaoLEOf5bZVxaRY1k_pRo5grHPdaFP1isGt35RsU",
-    alt: "Liberia to Tamarindo Transfer Route",
+    duration: "5h",
+    price: 180,
+    imageUrl: "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=800&q=80",
   },
   {
     slug: "san-jose-manuel-antonio",
-    origin: "San Jose City",
-    destination: "Manuel Antonio",
-    duration: "3.0h",
-    vehicleType: "premiumSedan",
-    price: 160,
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRJNy9Y5lmJPfl11bnBZPDsoHSTJpwNxcgbH2FpSFOzEBoJDiW8WtGB2dmvxUBK2rtDCazt8Yk-bk5I2teVS8ZC4ME15YxxO652cZpyDhjcvuEg-FuQ5ZdVPL-F9gXu-YOrOmnaRnr5-itawI1HVqduuLVMclhcrGwj5kvC2TiLZ2skkkI8TkOHDgTcx89p5iGuz0ZOTUUJaYglx94ZjukBhuKeIHlWLY9Gh6tNVMPQqNBF7sok8c3ZG13W0lJgB3zTDF5J-AFQUY",
-    alt: "San Jose to Manuel Antonio Transfer Route",
+    origin: "LIR",
+    destination: "La Fortuna",
+    duration: "3h",
+    price: 120,
+    imageUrl: "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=800&q=80",
+  },
+  {
+    slug: "san-jose-puerto-viejo",
+    origin: "SJO",
+    destination: "Puerto Viejo",
+    duration: "5h",
+    price: 195,
+    imageUrl: "https://images.unsplash.com/photo-1552083375-1447ce886485?w=800&q=80",
+  },
+  {
+    slug: "liberia-playa-del-coco",
+    origin: "LIR",
+    destination: "Playa del Coco",
+    duration: "1h",
+    price: 65,
+    imageUrl: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80",
   },
 ];
 
 export default function PopularRoutes() {
   const t = useTranslations();
 
-  const getVehicleIcon = (type: string) => {
-    switch (type) {
-      case "privateSuv":
-        return "directions_car";
-      case "sharedVan":
-        return "airport_shuttle";
-      case "premiumSedan":
-        return "directions_car";
-      default:
-        return "directions_car";
-    }
-  };
-
   return (
-    <section className="px-gutter max-w-container-max mx-auto w-full">
-      <h2 className="font-headline-md text-[32px] leading-[1.2] font-semibold text-primary mb-md">
+    <section className="py-xl px-gutter max-w-container-max mx-auto w-full">
+      <motion.h2
+        className="font-headline text-[32px] text-primary mb-lg"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         {t("routes.topDestinations")}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
-        {popularRoutes.map((route) => (
-          <Link
+      </motion.h2>
+
+      <div className="flex overflow-x-auto gap-md pb-8 snap-x snap-mandatory hide-scrollbar">
+        {popularRoutes.map((route, index) => (
+          <motion.div
             key={route.slug}
-            href={`/routes/${route.slug}`}
-            className="bg-surface-container-lowest border border-outline/20 rounded-lg overflow-hidden flex flex-col group cursor-pointer hover:shadow-md transition-shadow relative"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <div className="h-48 bg-surface-container-low relative">
-              <Image
-                alt={route.alt}
-                src={route.imageUrl}
-                fill
-                className="object-cover desaturate-50 mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
-              />
-              <div className="absolute bottom-0 left-0 w-full elevation-line"></div>
-            </div>
-            <div className="p-gutter flex flex-col flex-grow gap-sm">
-              <div className="flex justify-between items-start">
-                <div className="flex flex-col">
-                  <span className="font-data-label text-[14px] leading-[1.4] tracking-[0.05em] font-medium text-secondary uppercase tracking-wider">
-                    {route.origin}
-                  </span>
-                  <span className="font-headline-sm text-[24px] leading-[1.3] font-semibold text-primary mt-xs">
-                    {route.destination}
-                  </span>
+            <Link
+              href={`/routes/${route.slug}`}
+              className="route-card min-w-[300px] flex-none rounded-lg overflow-hidden snap-start flex flex-col cursor-pointer"
+            >
+              <div className="relative h-40 bg-surface-container-low group-hover:scale-105 transition-transform duration-500">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                  className="h-full w-full"
+                >
+                  <Image
+                    alt={`${route.origin} to ${route.destination}`}
+                    src={route.imageUrl}
+                    fill
+                    className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                    unoptimized
+                  />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                <motion.div
+                  className="absolute bottom-0 left-0 w-full h-1 bg-[--color-tide] origin-left"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+
+              <div className="p-md flex flex-col flex-grow bg-surface-container-lowest">
+                <div className="flex justify-between items-start mb-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="font-data-value text-[16px] text-on-surface font-medium">{route.origin}</span>
+                    <motion.span
+                      className="material-symbols-outlined text-[--color-tide] text-[16px]"
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    >
+                      arrow_forward
+                    </motion.span>
+                    <span className="font-data-value text-[16px] text-on-surface font-medium">{route.destination}</span>
+                  </div>
                 </div>
-                <span className="font-data-label text-[14px] leading-[1.4] tracking-[0.05em] font-medium text-primary-container bg-primary-fixed/30 px-xs py-1 rounded">
-                  {route.duration}
-                </span>
+
+                <div className="elevation-line w-full mb-md"></div>
+
+                <p className="font-body text-[14px] text-on-surface-variant mb-md flex-grow">
+                  Approx. {route.duration} transfer time.
+                </p>
+
+                <motion.div
+                  className="flex justify-between items-center pt-4 border-t border-outline-variant/20"
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="font-data-label text-[14px] text-[--color-stone]">FROM ${route.price}</span>
+                  <span className="font-data-label text-[14px] text-primary underline cursor-pointer">{t("routes.viewAll")}</span>
+                </motion.div>
               </div>
-              <div className="mt-auto flex justify-between items-end pt-md border-t border-outline-variant/30">
-                <span className="font-body-sm text-[14px] leading-[1.5] text-on-surface-variant flex items-center gap-xs">
-                  <span className="material-symbols-outlined text-[18px]">
-                    {getVehicleIcon(route.vehicleType)}
-                  </span>
-                  {t(`routes.${route.vehicleType}`)}
-                </span>
-                <span className="font-data-value text-[16px] leading-[1.4] text-primary font-semibold">
-                  {t("routes.fromPrice")} ${route.price}
-                </span>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          </motion.div>
         ))}
       </div>
+
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .route-card {
+          border: 1px solid rgba(74, 93, 83, 0.2);
+          background-color: #ffffff;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .route-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(31, 58, 46, 0.1);
+        }
+      `}</style>
     </section>
   );
 }

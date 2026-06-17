@@ -3,17 +3,21 @@ from sqlmodel import Session, select
 from app.database import get_session
 from app.models.booking import Booking, BookingStatus, PaymentStatus, PaymentType
 from app.models.route import Route
+from app.models.admin_user import AdminUser
 from app.schemas.booking import BookingCreate, BookingUpdate, BookingResponse
 from app.services.stripe_service import create_checkout_session
 from app.services.email_service import send_internal_notification
+from app.auth.jwt_auth import RoleChecker
 
 router = APIRouter(prefix="/bookings", tags=["bookings"])
+get_current_admin = RoleChecker(required_superadmin=True)
 
 
 @router.get("/", response_model=list[BookingResponse])
 async def list_bookings(
     status_filter: BookingStatus = None,
     session: Session = Depends(get_session),
+    current_user: AdminUser = Depends(get_current_admin),
 ):
     """List all bookings (admin only)."""
     query = select(Booking)
@@ -52,7 +56,7 @@ async def create_booking(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="Route not found",
             )
-        amount_due = route.price * booking_data.passengers
+        amount_due = route.price
 
     deposit_percentage = 100 if booking_data.payment_type == PaymentType.FULL else 30
 
@@ -118,6 +122,7 @@ async def update_booking(
     booking_id: int,
     booking_data: BookingUpdate,
     session: Session = Depends(get_session),
+    current_user: AdminUser = Depends(get_current_admin),
 ):
     """Update a booking (admin only)."""
     booking = session.get(Booking, booking_id)

@@ -5,6 +5,7 @@ from app.auth.jwt_auth import (
     decode_token,
     get_current_user,
     authenticate_user,
+    RoleChecker,
 )
 
 __all__ = [
@@ -14,4 +15,5 @@ __all__ = [
     "decode_token",
     "get_current_user",
     "authenticate_user",
+    "RoleChecker",
 ]

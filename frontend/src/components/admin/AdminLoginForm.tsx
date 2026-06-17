@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2 } from "lucide-react";
+import { Loader2, Truck } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
@@ -35,19 +35,84 @@ export default function AdminLoginForm() {
       const result = await response.json();
       localStorage.setItem("admin_token", result.access_token);
       router.push("/en/admin/dashboard");
-    } catch { setError("Invalid email or password"); }
+    } catch {
+      setError("Invalid email or password. Please try again.");
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface-container-low">
-      <div className="bg-surface-container-lowest border border-outline/20 rounded-lg p-xl w-full max-w-md">
-        <div className="text-center mb-lg"><h1 className="font-headline-md text-[32px] text-primary mb-sm">Admin Login</h1><p className="font-body-lg text-[18px] text-on-surface-variant">Sign in to manage bookings and routes</p></div>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-md">
-          <div><label className="font-data-label text-[14px] text-secondary mb-xs block">Email</label><input type="email" {...register("email")} className={`w-full bg-surface-container-low border ${errors.email ? "border-error" : "border-outline"} rounded p-sm font-data-value text-[16px]`} placeholder="admin@costaway.com" />{errors.email && <span className="text-error text-[12px]">{errors.email.message}</span>}</div>
-          <div><label className="font-data-label text-[14px] text-secondary mb-xs block">Password</label><input type="password" {...register("password")} className={`w-full bg-surface-container-low border ${errors.password ? "border-error" : "border-outline"} rounded p-sm font-data-value text-[16px]`} placeholder="••••••••" />{errors.password && <span className="text-error text-[12px]">{errors.password.message}</span>}</div>
-          {error && <div className="bg-error-container text-on-error-container p-sm rounded font-data-label text-[14px]">{error}</div>}
-          <button type="submit" disabled={isSubmitting} className="cta-button font-data-label text-[14px] py-sm px-md rounded transition-colors w-full text-center disabled:opacity-50 flex items-center justify-center gap-sm mt-sm">{isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}{isSubmitting ? "Signing in..." : "Sign In"}</button>
-        </form>
+    <div className="min-h-screen flex items-center justify-center bg-surface">
+      <div className="w-full max-w-md p-xl">
+        {/* Logo & Header */}
+        <div className="text-center mb-xl">
+          <div className="w-16 h-16 rounded-2xl bg-[--color-tide]/10 flex items-center justify-center mx-auto mb-lg">
+            <Truck className="w-8 h-8 text-[--color-tide]" />
+          </div>
+          <h1 className="font-display text-[48px] text-primary mb-sm">CostaWay</h1>
+          <p className="font-data-label text-[14px] text-[--color-stone] uppercase tracking-wider mb-sm">Admin Portal</p>
+          <p className="font-body text-[18px] text-on-surface-variant">Sign in to manage your transfer business</p>
+        </div>
+
+        {/* Form Card */}
+        <div className="bg-surface-container-lowest card-border rounded-xl p-xl">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-lg">
+            {/* Email */}
+            <div className="flex flex-col gap-1">
+              <label className="font-data-label text-[14px] text-[--color-stone]" htmlFor="email">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                {...register("email")}
+                className={`form-input w-full font-data-value text-[16px] text-primary p-3 focus:ring-0 bg-transparent`}
+                placeholder="admin@costaway.com"
+              />
+              {errors.email && (
+                <span className="text-error text-[12px] font-data-label">{errors.email.message}</span>
+              )}
+            </div>
+
+            {/* Password */}
+            <div className="flex flex-col gap-1">
+              <label className="font-data-label text-[14px] text-[--color-stone]" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                {...register("password")}
+                className={`form-input w-full font-data-value text-[16px] text-primary p-3 focus:ring-0 bg-transparent`}
+                placeholder="••••••••"
+              />
+              {errors.password && (
+                <span className="text-error text-[12px] font-data-label">{errors.password.message}</span>
+              )}
+            </div>
+
+            {/* Error Message */}
+            {error && (
+              <div className="bg-error-container/20 border border-error/30 text-error p-md rounded-lg font-data-label text-[14px]">
+                {error}
+              </div>
+            )}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-[--color-sunset] text-white font-headline text-[24px] py-4 px-md rounded-lg transition-opacity hover:opacity-90 active:scale-[0.98] font-bold flex items-center justify-center gap-sm mt-md"
+            >
+              {isSubmitting && <Loader2 className="w-5 h-5 animate-spin" />}
+              {isSubmitting ? "Signing in..." : "Sign In"}
+            </button>
+          </form>
+        </div>
+
+        {/* Footer */}
+        <p className="text-center font-data-label text-[12px] text-[--color-stone] mt-lg">
+          © 2026 CostaWay Admin. All rights reserved.
+        </p>
       </div>
     </div>
   );

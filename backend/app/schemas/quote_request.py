@@ -7,7 +7,7 @@ from app.models.quote_request import QuoteRequestStatus
 class QuoteRequestBase(BaseModel):
     origin: str = Field(min_length=2)
     destination: str = Field(min_length=2)
-    date: Optional[date] = None
+    travel_date: Optional[date] = None
     passengers: int = Field(ge=1, le=50)
     customer_name: str = Field(min_length=2)
     email: EmailStr

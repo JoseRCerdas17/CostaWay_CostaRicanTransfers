@@ -44,9 +44,10 @@ def decode_token(token: str) -> Optional[TokenData]:
         )
         user_id: int = payload.get("user_id")
         email: str = payload.get("email")
+        is_superadmin: bool = payload.get("is_superadmin", False)
         if user_id is None or email is None:
             return None
-        return TokenData(user_id=user_id, email=email)
+        return TokenData(user_id=user_id, email=email, is_superadmin=is_superadmin)
     except JWTError:
         return None
 
@@ -81,3 +82,16 @@ def authenticate_user(session: Session, email: str, password: str) -> Optional[A
     if not verify_password(password, user.password_hash):
         return None
     return user
+
+
+class RoleChecker:
+    def __init__(self, required_superadmin: bool = False):
+        self.required_superadmin = required_superadmin
+
+    async def __call__(self, current_user: AdminUser = Depends(get_current_user)) -> AdminUser:
+        if self.required_superadmin and not current_user.is_superadmin:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Superadmin privileges required",
+            )
+        return current_user

@@ -61,3 +61,17 @@ def construct_webhook_event(payload: bytes, sig_header: str) -> stripe.Event:
     return stripe.Webhook.construct_event(
         payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
     )
+
+
+def refund_payment(payment_intent_id: str, amount: int = None) -> dict:
+    """
+    Refund a payment via Stripe.
+    If amount is None, refunds the full amount.
+    Returns the refund object.
+    """
+    refund_params = {"payment_intent": payment_intent_id}
+    if amount:
+        refund_params["amount"] = amount
+
+    refund = stripe.Refund.create(**refund_params)
+    return {"refund_id": refund.id, "status": refund.status}

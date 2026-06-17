@@ -58,7 +58,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-surface text-on-surface antialiased min-h-screen pb-20 md:pb-0 flex flex-col font-data-value text-[16px] leading-[1.5]">
+      <body className="bg-surface text-on-surface antialiased min-h-screen pb-20 md:pb-0 flex flex-col font-data-value text-[16px] leading-normal">
         {children}
       </body>
     </html>

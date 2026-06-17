@@ -9,6 +9,7 @@ class AdminUserCreate(BaseModel):
 class AdminUserResponse(BaseModel):
     id: int
     email: str
+    is_superadmin: bool
 
     model_config = {"from_attributes": True}
 
@@ -21,3 +22,4 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     user_id: int
     email: str
+    is_superadmin: bool

@@ -16,7 +16,7 @@ export default async function HomePage({
   return (
     <>
       <Header locale={locale} />
-      <main className="flex-grow flex flex-col gap-xl">
+      <main className="grow flex flex-col gap-xl">
         <HeroSection locale={locale} />
         <PopularRoutes />
         <TrustSection />

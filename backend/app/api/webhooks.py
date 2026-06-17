@@ -3,7 +3,9 @@ from sqlmodel import Session
 import logging
 from app.database import get_session
 from app.models.booking import Booking, PaymentStatus
+from app.models.route import Route
 from app.services.stripe_service import construct_webhook_event
+from app.services.email_service import send_confirmation_email
 
 router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 
@@ -51,6 +53,30 @@ async def stripe_webhook(
                 booking.stripe_payment_id = payment_intent
                 session.add(booking)
                 session.commit()
+
+                route = session.get(Route, booking.route_id) if booking.route_id else None
+                route_info = {
+                    "origin": route.origin if route else "Custom",
+                    "destination": route.destination if route else "Quote",
+                }
+
+                deposit_amount = int(booking.amount_due * booking.deposit_percentage / 100)
+
+                try:
+                    send_confirmation_email(
+                        to_email=booking.email,
+                        customer_name=booking.customer_name,
+                        booking_id=booking.id,
+                        route_info=route_info,
+                        date=str(booking.date),
+                        time=str(booking.time),
+                        passengers=booking.passengers,
+                        amount_paid=deposit_amount,
+                    )
+                    logger.info(f"Confirmation email sent for booking {booking.id}")
+                except Exception as e:
+                    logger.error(f"Failed to send confirmation email for booking {booking.id}: {e}")
+
                 logger.info(f"Booking {booking.id} payment marked as paid")
 
         return {"status": "success"}

@@ -3,11 +3,87 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const routes = [
-  { slug: "sjo-airport-la-fortuna", origin: "SJO Airport", destination: "La Fortuna", duration: "3.5h", vehicleType: "privateSuv", price: 180, imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJe2B0-uOgLdzdUb7ZdrMFJnwCK4Y5MspY6clTC5TNNl_dxhUs5DWrZ-PJ2-sSlB70luPqn1XBc4A-miKMlLhhL46fVGoNWEoOn8Q9EGE7r9AwIYTWc3-7PjwuFFdQ9sNjDyXTXIZTCkfBjhzJ2xQ2_olN1dxPISbjORlq-r1NVIyTn1ufyYmY6VzWEzyHlCzrxoBAUNKptR8kEI-2ektoKWd7XXlb5q9a_BLGDtZZXIF9vVYOldkQq9xTZUGacCoqh6POXiDatrM" },
-  { slug: "liberia-tamarindo", origin: "LIR Airport", destination: "Tamarindo", duration: "1.5h", vehicleType: "sharedVan", price: 45, imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxTIPEsDkmpxey1rQv_FsBVXRfA-6-3FYAXTEST5Ij61Gk_uUiKkFUtcWpojgfbr-tOx0I4ckzZQ69ocCvv4glAosxmPQNPBE3hp7mrXnMcLS2-f-IAmvxJ_P626OFVbJH9Q7s3xG2yB8mEtbuf8cPm3yni-no6QaVfLo4c4sNp10bfyfojorT9dO7xg5tu8FNnTruJsoy5G2uHtRtYAPlvrNmoalynvKwNQ-IaoLEOf5bZVxaRY1k_pRo5grHPdaFP1isGt35RsU" },
-  { slug: "san-jose-manuel-antonio", origin: "San Jose City", destination: "Manuel Antonio", duration: "3.0h", vehicleType: "premiumSedan", price: 160, imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRJNy9Y5lmJPfl11bnBZPDsoHSTJpwNxcgbH2FpSFOzEBoJDiW8WtGB2dmvxUBK2rtDCazt8Yk-bk5I2teVS8ZC4ME15YxxO652cZpyDhjcvuEg-FuQ5ZdVPL-F9gXu-YOrOmnaRnr5-itawI1HVqduuLVMclhcrGwj5kvC2TiLZ2skkkI8TkOHDgTcx89p5iGuz0ZOTUUJaYglx94ZjukBhuKeIHlWLY9Gh6tNVMPQqNBF7sok8c3ZG13W0lJgB3zTDF5J-AFQUY" },
+  {
+    slug: "sjo-airport-tamarindo",
+    origin: "SJO",
+    destination: "Tamarindo",
+    duration: "4.5 hrs",
+    originFull: "San Jose Airport (SJO)",
+    vehicleType: "sharedVan",
+    vehicleLabel: "Shared Van",
+    price: 55,
+    priceLabel: "/seat",
+    badge: "popular",
+    imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
+  },
+  {
+    slug: "liberia-nosara",
+    origin: "LIR",
+    destination: "Nosara",
+    duration: "2.5 hrs",
+    originFull: "Liberia Airport (LIR)",
+    vehicleType: "privateSuv",
+    vehicleLabel: "Private SUV",
+    price: 140,
+    priceLabel: "/vehicle",
+    badge: "",
+    imageUrl: "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=800&q=80",
+  },
+  {
+    slug: "la-fortuna-monteverde",
+    origin: "FRT",
+    destination: "MTV",
+    duration: "3.0 hrs",
+    originFull: "La Fortuna (Arenal)",
+    vehicleType: "vanBoatVan",
+    vehicleLabel: "Van-Boat-Van",
+    price: 35,
+    priceLabel: "/person",
+    badge: "scenicRoute",
+    imageUrl: "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=800&q=80",
+  },
+  {
+    slug: "san-jose-manuel-antonio",
+    origin: "SJO City",
+    destination: "MA",
+    duration: "3.5 hrs",
+    originFull: "San Jose City",
+    vehicleType: "sharedVan",
+    vehicleLabel: "Shared Van",
+    price: 49,
+    priceLabel: "/seat",
+    badge: "",
+    imageUrl: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80",
+  },
+  {
+    slug: "liberia-playa-del-coco",
+    origin: "LIR",
+    destination: "Coco",
+    duration: "1.0 hrs",
+    originFull: "Liberia Airport (LIR)",
+    vehicleType: "privateSuv",
+    vehicleLabel: "Private SUV",
+    price: 55,
+    priceLabel: "/vehicle",
+    badge: "",
+    imageUrl: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80",
+  },
+  {
+    slug: "san-jose-puerto-viejo",
+    origin: "SJO",
+    destination: "P.Viejo",
+    duration: "5.0 hrs",
+    originFull: "San Jose City",
+    vehicleType: "privateSuv",
+    vehicleLabel: "Private SUV",
+    price: 195,
+    priceLabel: "/vehicle",
+    badge: "popular",
+    imageUrl: "https://images.unsplash.com/photo-1552083375-1447ce886485?w=800&q=80",
+  },
 ];
 
 export default function RouteCatalog() {
@@ -15,34 +91,131 @@ export default function RouteCatalog() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-      {routes.map((route) => (
-        <Link
+      {routes.map((route, index) => (
+        <motion.article
           key={route.slug}
-          href={`/routes/${route.slug}`}
-          className="bg-surface-container-lowest border border-outline/20 rounded-lg overflow-hidden flex flex-col group cursor-pointer hover:shadow-md transition-shadow relative"
+          className="bg-surface-container-lowest border border-stone-20 flex flex-col p-md group"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          whileHover={{ y: -4 }}
         >
-          <div className="h-48 bg-surface-container-low relative">
-            <Image alt={route.origin + " to " + route.destination} src={route.imageUrl} fill className="object-cover desaturate-50 mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity" />
-            <div className="absolute bottom-0 left-0 w-full elevation-line"></div>
-          </div>
-          <div className="p-gutter flex flex-col flex-grow gap-sm">
-            <div className="flex justify-between items-start">
-              <div className="flex flex-col">
-                <span className="font-data-label text-[14px] text-secondary uppercase">{route.origin}</span>
-                <span className="font-headline-sm text-[24px] text-primary mt-xs">{route.destination}</span>
-              </div>
-              <span className="font-data-label text-[14px] text-primary-container bg-primary-fixed/30 px-xs py-1 rounded">{route.duration}</span>
+          <div className="mb-lg">
+            <div className="flex justify-between items-start mb-sm">
+              {route.badge ? (
+                <motion.span
+                  className="font-data-label text-[10px] text-[--color-stone] border border-stone-20 px-2 py-1 uppercase tracking-widest"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {route.badge === "popular" ? t("routes.popular") : t("routes.scenicRoute")}
+                </motion.span>
+              ) : (
+                <span className="font-data-label text-[10px] text-transparent border border-transparent px-2 py-1 uppercase tracking-widest">
+                  Placeholder
+                </span>
+              )}
+              <motion.span
+                className="material-symbols-outlined text-[--color-stone] text-[20px] cursor-pointer"
+                whileHover={{ scale: 1.2, color: "#FF6B4A" }}
+              >
+                favorite_border
+              </motion.span>
             </div>
-            <div className="mt-auto flex justify-between items-end pt-md border-t border-outline-variant/30">
-              <span className="font-body-sm text-[14px] text-on-surface-variant flex items-center gap-xs">
-                <span className="material-symbols-outlined text-[18px]">directions_car</span>
-                {t(`routes.${route.vehicleType}`)}
+
+            <motion.div
+              className="relative h-32 mb-md rounded overflow-hidden bg-surface-container-low"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Image
+                alt={`${route.originFull} to ${route.destination}`}
+                src={route.imageUrl}
+                fill
+                className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                unoptimized
+              />
+              <motion.div
+                className="absolute bottom-0 left-0 w-full h-1 bg-[--color-tide]"
+                initial={{ scaleX: 0 }}
+                whileHover={{ scaleX: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.div>
+
+            <h3 className="font-headline text-[24px] text-primary-container leading-tight mb-sm">
+              {route.originFull} <br /> <span className="text-[--color-stone] font-body text-[16px]">to</span> {route.destination}
+            </h3>
+
+            <div className="elevation-line mt-md mb-sm"></div>
+
+            <div className="flex justify-between font-data-value text-[12px] text-[--color-stone]">
+              <span>{route.origin}</span>
+              <span>{route.duration}</span>
+              <span>{route.destination}</span>
+            </div>
+          </div>
+
+          <div className="mt-auto grid grid-cols-2 gap-sm mb-md">
+            <div className="flex flex-col">
+              <span className="font-data-label text-[10px] text-[--color-stone] uppercase">{t("routes.service")}</span>
+              <span className="font-body text-[14px] flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px] text-primary-container">
+                  {route.vehicleType === "sharedVan" ? "airport_shuttle" : route.vehicleType === "privateSuv" ? "directions_car" : "sailing"}
+                </span>
+                {route.vehicleLabel}
               </span>
-              <span className="font-data-value text-[16px] text-primary font-semibold">{t("routes.fromPrice")} ${route.price}</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-data-label text-[10px] text-[--color-stone] uppercase">
+                {route.priceLabel === "/vehicle" ? t("routes.flatRate") : t("routes.startingFrom")}
+              </span>
+              <span className="font-data-value text-[16px] text-primary-container font-medium">
+                ${route.price} <span className="text-[12px] text-[--color-stone]">{route.priceLabel}</span>
+              </span>
             </div>
           </div>
-        </Link>
+
+          <Link href={`/routes/${route.slug}`}>
+            <motion.button
+              className="w-full border border-primary-container text-primary-container py-2 font-data-label text-[14px] hover:bg-primary-container hover:text-on-primary transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {route.priceLabel === "/vehicle" ? t("routes.bookPrivate") : t("routes.viewSchedules")}
+            </motion.button>
+          </Link>
+        </motion.article>
       ))}
+
+      {/* Custom Request CTA Card */}
+      <motion.article
+        className="bg-primary-container text-on-primary border border-stone-20 flex flex-col p-md justify-center items-center text-center"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.3 }}
+        whileHover={{ scale: 1.02 }}
+      >
+        <motion.span
+          className="material-symbols-outlined text-[48px] mb-sm"
+          animate={{ rotate: [0, 10, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          map
+        </motion.span>
+        <h3 className="font-headline text-[24px] mb-sm">{t("routes.customRouteTitle")}</h3>
+        <p className="font-body text-[14px] mb-md text-primary-fixed-dim">{t("routes.customRouteSubtitle")}</p>
+        <Link href="/routes/quote-request">
+          <motion.button
+            className="bg-sunset text-on-primary px-lg py-sm font-data-label text-[14px] hover:bg-opacity-90 transition-colors w-full"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {t("routes.requestQuote")}
+          </motion.button>
+        </Link>
+      </motion.article>
     </div>
   );
 }

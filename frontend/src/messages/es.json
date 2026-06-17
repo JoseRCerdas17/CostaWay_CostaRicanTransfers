@@ -1,18 +1,19 @@
 {
-  "common": {
-    "siteName": "COSTA RICA TRANSFERS",
-    "copyright": "© 2024 Elevated Logistics Costa Rica. Todos los derechos reservados.",
+"common": {
+    "siteName": "CostaWay",
+    "copyright": "© 2024 Elevated Logistics Costa Rica. All rights reserved.",
+    "search": "Buscar",
+    "bookings": "Reservas",
+    "support": "Soporte"
+  },
+  "nav": {
     "search": "Buscar",
     "bookings": "Reservas",
     "support": "Soporte",
     "account": "Cuenta"
   },
-  "nav": {
-    "search": "Buscar",
-    "bookings": "Reservas",
-    "support": "Soporte"
-  },
   "hero": {
+    "professionalLabel": "Transferencias Profesionales",
     "title": "Transferencias confiables por el terreno costarricense.",
     "subtitle": "Servicios de transporte profesional, sólido y confiable que garantizan que llegue a su destino con claridad y tranquilidad.",
     "from": "Desde",
@@ -20,6 +21,7 @@
     "date": "Fecha",
     "passengers": "Pasajeros",
     "searchRoutes": "Buscar Rutas",
+    "findTransfer": "Encuentra Tu Transfer",
     "fromPlaceholder": "Aeropuerto SJO",
     "toPlaceholder": "La Fortuna",
     "passengerOptions": {
@@ -27,19 +29,46 @@
       "2": "2 Pasajeros",
       "3-4": "3-4 Pasajeros",
       "5+": "5+ Pasajeros"
+    },
+    "trust": {
+      "licensed": "Licenciado",
+      "support": "Soporte 24/7",
+      "noFees": "Sin Cargos Ocultos"
     }
   },
   "routes": {
-    "topDestinations": "Destinos Principales",
+    "topDestinations": "Rutas Principales",
     "catalogTitle": "Todas las Rutas",
-    "catalogSubtitle": "Explore nuestra selección de rutas populares de transferencia por Costa Rica. Todos los precios son por persona.",
+    "catalogSubtitle": "Explore nuestra selección de rutas populares de transferencia por Costa Rica. Todos los precios son por vehículo.",
     "duration": "Duración",
     "fromPrice": "Desde",
     "privateSuv": "SUV Privado",
     "sharedVan": "Van Compartida",
     "premiumSedan": "Sedan Premium",
-    "viewAll": "Ver Todas las Rutas",
-    "bookNow": "Reservar Ahora"
+    "privateTransfer": "Transfer Privado",
+    "sharedTransfer": "Transfer Compartido",
+    "viewAll": "Ver",
+    "bookNow": "Reservar Ahora",
+    "exploreRoutes": "Explorar Rutas",
+    "fromPlaceholder": "Desde (ej. Aeropuerto SJO)",
+    "toPlaceholder": "Hasta (ej. Tamarindo)",
+    "searchRoutes": "BUSCAR RUTAS",
+    "allRegions": "Todas las Regiones",
+    "guanacaste": "Guanacaste",
+    "arenalMonteverde": "Arenal & Monteverde",
+    "caribbeanCoast": "Caribe",
+    "centralPacific": "Pacífico Central",
+    "popular": "Popular",
+    "scenicRoute": "Ruta Escénica",
+    "service": "Servicio",
+    "flatRate": "Tarifa plana",
+    "startingFrom": "Desde",
+    "viewSchedules": "VER HORARIOS",
+    "bookPrivate": "RESERVAR PRIVADO",
+    "loadMore": "CARGAR MÁS RUTAS",
+    "customRouteTitle": "¿No ve su ruta?",
+    "customRouteSubtitle": "Ofrecemos transferencias privadas personalizadas a cualquier lugar de Costa Rica.",
+    "requestQuote": "SOLICITAR COTIZACIÓN"
   },
   "quoteRequest": {
     "title": "Solicitar una Cotización Personalizada",
@@ -57,11 +86,25 @@
     "submitting": "Enviando...",
     "successTitle": "¡Solicitud Enviada!",
     "successMessage": "Gracias por su interés. Revisaremos su solicitud y le enviaremos una cotización personalizada dentro de 24 horas.",
-    "backHome": "Volver al Inicio"
+    "backHome": "Volver al Inicio",
+    "contactInfo": "Información de Contacto",
+    "routeLogistics": "Logística de Ruta",
+    "originLocation": "Ubicación de Origen",
+    "originPlaceholder": "Hotel, Aeropuerto o Ciudad",
+    "destinationLocation": "Ubicación de Destino",
+    "destinationPlaceholder": "Dirección específica o área",
+    "scheduleCapacity": "Horario & Capacidad",
+    "departureDate": "Fecha de Salida",
+    "preferredTime": "Hora Preferida",
+    "totalTravelers": "Total de Viajeros",
+    "specifications": "Especificaciones",
+    "noCommitment": "Enviar este formulario no le compromete a una reserva. Recibirá una propuesta detallada por correo electrónico.",
+    "requestQuote": "Solicitar Cotización"
   },
   "trust": {
+    "label": "Por Qué Elegirnos",
     "title": "Logística Construida sobre Confianza",
-    "subtitle": "Nuestras operaciones están diseñadas con atención meticulosa al detalle, asegurando que su transporte sea predecible, seguro y completamente administrado.",
+    "subtitle": "Diseño meticuloso que asegura un transporte predecible, seguro y completamente administrado.",
     "localExpertise": {
       "title": "Experiencia local",
       "description": "Navegando diversos terrenos con conductores veteranos que entienden los matices de las rutas costarricenses."
@@ -69,12 +112,19 @@
     "safetyProtocol": {
       "title": "Protocolo de seguridad",
       "description": "Programas de mantenimiento estrictos y verificación rigurosa de conductores forman la base de nuestra seguridad operacional."
+    },
+    "stats": {
+      "transfers": "Transferencias",
+      "rating": "Calificación",
+      "support": "Soporte"
     }
   },
   "footer": {
     "safetyProtocol": "Protocolo de Seguridad",
     "localExpertise": "Experiencia Local",
     "termsOfService": "Términos de Servicio",
+    "privacyPolicy": "Política de Privacidad",
+    "cookiePolicy": "Política de Cookies",
     "language": "EN/ES"
   },
   "booking": {
